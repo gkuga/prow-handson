@@ -1,0 +1,16 @@
+# OSX trash
+.DS_Store
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+
+# Secret files
+secrets
+
+# Environment variable file
+.env

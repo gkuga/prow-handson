@@ -12,6 +12,7 @@ OpenSaaS Studio 5月の勉強会は[Prow](https://github.com/kubernetes/test-inf
 * [Plugins](docs/plugins.md)
 
 # ハンズオン
+* [Prowのデプロイ](docs/getting_started_deploy.md)
 
 # まとめ
 

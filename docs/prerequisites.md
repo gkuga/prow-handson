@@ -15,8 +15,33 @@
 $ curl -LO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-240.0.0-darwin-x86_64.tar.gz
 $ tar -xf google-cloud-sdk-240.0.0-darwin-x86_64.tar.gz
 $ ./google-cloud-sdk/install.sh
-$ ./google-cloud-sdk/bin/gcloud init
 ```
+
+## gcloudコマンドの設定
+
+gcloudコマンドが使えるように認証をする。ブラウザを開いて作成した個人アカウントで認証する。
+```
+$ gcloud auth login
+Your browser has been opened to visit:
+
+    https://accounts.google.com/o/oauth2/auth?redirect_uri=xxxx...
+```
+
+認証したアカウントがACTIVEになれば成功。
+```
+$ gcloud auth list
+       Credentialed Accounts
+ACTIVE  ACCOUNT
+        xxxx.xxxx@xxxx.xxx
+*       xxxx.xxxx@xxxx.xxx
+        xxxx_xxxx@xxxx.xx.xx
+```
+
+アカウントの切り替えは以下
+```
+$ gcloud config set account xxxx_xxxx@xxxx.xx.xx
+```
+
 # terraformコマンド
 環境構築にインフラのコード化ツールである[Terraform](https://www.terraform.io)を使う。[Download Terraform](https://www.terraform.io/downloads.html)からダウンロードしてコマンドパスが通った場所に入れる。Homebrewでも`brew install terraform`でインストールできる。
 
