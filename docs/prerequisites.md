@@ -1,3 +1,7 @@
+ハンズオンで個人のGCPアカウントを使うので先にこちらを見て下さい！
+
+* [GCPの課金トラブル共有](https://docs.google.com/presentation/d/1xnizaHytFx4pf58A-V4OqoGsG4RKdHO89rRwky72sH0/edit)
+
 ハンズオンではGKE(Google Container Engine)にKubernetesクラスターを作成しProwをデプロイするのに以下を使う。GCP(Google Cloud Platform)の無料トライアルを使う時は会社のアカウントではなく、個人のアカウントを使う。会社のアカウントで無料トライアルを有効にすると組織のアカウントがダウングレードされるので間違わないように注意。
 
 * 個人のGoogleアカウント
