@@ -1,0 +1,17 @@
+# https://prow.k8s.io/plugins
+plugins:
+  < org >/< repo >:
+  - size
+  - cat # /meow
+  - dog # /it-is-fine
+  - yuks # /joke
+  - pony # /pony
+  - shrug # /shrug
+  - blunderbuss
+
+size:
+  s:   10
+  m:   30
+  l:   100
+  xl:  500
+  xxl: 1000

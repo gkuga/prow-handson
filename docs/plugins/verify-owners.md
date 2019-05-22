@@ -1,0 +1,1 @@
+OWNERSファイルの検証をしてくれる。YAMLなのでタブがないかなど。エラーがあると、`do-not-merge/invalid-owners-file`ラベルを付ける。
