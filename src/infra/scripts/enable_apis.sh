@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-gcloud beta billing projects link ${PROJECT_ID} --billing-account ${BILLING_ACCOUNT_ID}
+gcloud beta billing projects link ${TF_VAR_project_id} --billing-account ${TF_VAR_billing_account_id}
 
 gcloud services enable compute.googleapis.com
 gcloud services enable iam.googleapis.com
