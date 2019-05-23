@@ -15,7 +15,7 @@ NAME                                   JOB          BUILDID               TYPE  
 2a3293d3-7cd3-11e9-8f9f-2ad8025b9d54   postsubmit   1131301322486714368   postsubmit   gkuga   prow-handson           5h          5h               failure
 ```
 
-例えばK8sでは、ReplicaSetというリソースが作成されると、指定されたPodのレプリカ数を維持するようにPodリソースを調整するコントローラーというデーモンが動く。ProwではProwJobが作成されると、そこで指定されたジョブをPodリソースとして作成して実行する。そして、成功ならステータスをSuccessにして失敗ならFailureにするなどしている。ProwJobの作成は、定期的なジョブならばHorologiumサービスが作成し、PRが更新されるときはHookサービスのTriggerプラグインが作成する。
+例えばK8sでは、ReplicaSetというリソースが作成されると、指定されたPodのレプリカ数を維持するようにPodリソースを調整するコントローラーというデーモンが動く。ProwではProwJobが作成されると、Plankというサービスが、ProwJobに記述されたジョブをPodリソースとして作成して実行する。そして、成功ならステータスをSuccessにして失敗ならFailureにするなどしている。ProwJobの作成は、定期的なジョブならばHorologiumサービスが作成し、PRが更新されるときはHookサービスのTriggerプラグインが作成する。
 
 作成されたジョブを実行するなど、ライフサイクルを管理するのはPlankサービスが行っている。
 
