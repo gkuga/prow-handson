@@ -9,7 +9,7 @@ $ cp src/infra/manifests/config.yaml.sample2 src/infra/manifests/config.yaml
 
 * 書き換え
 
-Sample 1と同様にplugins.yamlの< org >/< repo >を自分のアカウント名/リポジトリ名へ書き換える。また、config.yamlに< domain >というところがあるので、Ingressのアドレスに(kubectl get ingで確認できる）。< bucket >はGCPのプロジェクトIDへ（バケット名はプロジェクトIDで作成されている。gcloud config listでプロジェクトIDは確認できる。）。< org >は自分のアカウント名< repo >はリポジトリ名へ。
+Sample 1と同様にplugins.yamlの`< org >/< repo >`を自分の`アカウント名/リポジトリ名`へ書き換える。また、config.yamlに`< domain >`というところがあるので、Ingressのアドレスに(`kubectl get ing`で確認できる）。`< bucket >`はGCPのプロジェクトIDへ（バケット名はプロジェクトIDで作成されている。`gcloud config list`でプロジェクトIDは確認できる。）。`< org >`は自分のアカウント名`< repo >`はリポジトリ名へ。
 
 * 反映
 
