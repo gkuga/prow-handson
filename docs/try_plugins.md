@@ -5,21 +5,25 @@ GithubのWebhookとhookサービスのやりとりで完結するもの。プラ
 ```
 $ cp src/infra/manifests/plugins.yaml.sample1 src/infra/manifests/plugins.yaml
 $ cp src/infra/manifests/config.yaml.sample1 src/infra/manifests/config.yaml
-$ make check-conf # For mac user
 ```
 
 * 書き換え
 
-例えば`< org >/< repo >`を`gkuga/prow-handson`へ。< domain >をIngressのアドレスに。
+↑でコピーしたplugins.yamlに`< org >/< repo >`とあるので、自分のリポジトリ名へ。(例えば`gkuga/prow-handson`)
 
-Ingressのアドレスは↓
 ```
-$ kubectl get ing
-NAME   HOSTS   ADDRESS        PORTS   AGE
-ing    *       xx.xx.xx.xxx   80      140m
+$ vi src/infra/manifests/plugins.yaml
 ```
 
 * 反映
+
+下記でエラーが出ないかチェック。
+
+```
+$ make check-conf # For mac user
+```
+
+エラーがなければ下記で反映。
 
 ```
 $ make update-plugins
