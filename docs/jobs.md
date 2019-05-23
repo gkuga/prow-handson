@@ -15,7 +15,9 @@ NAME                                   JOB          BUILDID               TYPE  
 2a3293d3-7cd3-11e9-8f9f-2ad8025b9d54   postsubmit   1131301322486714368   postsubmit   gkuga   prow-handson           5h          5h               failure
 ```
 
-例えばK8sでは、ReplicaSetというリソースが作成されると、指定されたPodのレプリカ数を維持するようにPodリソースを調整するコントローラーというデーモンが動く。ProwではProwJobが作成されると、そこで指定されたジョブをPodリソースとして作成して実行する。そして、成功ならステータスをSuccessにして失敗ならFailureにするなどしている。ProwJobの作成は、定期的なジョブならばHorologiumサービスが作成し、PRが更新されるときはHookサービスのTriggerプラグインが作成する。作成されたジョブを実行するなど、ライフサイクルを管理するのはPlankサービスが行っている。
+例えばK8sでは、ReplicaSetというリソースが作成されると、指定されたPodのレプリカ数を維持するようにPodリソースを調整するコントローラーというデーモンが動く。ProwではProwJobが作成されると、そこで指定されたジョブをPodリソースとして作成して実行する。そして、成功ならステータスをSuccessにして失敗ならFailureにするなどしている。ProwJobの作成は、定期的なジョブならばHorologiumサービスが作成し、PRが更新されるときはHookサービスのTriggerプラグインが作成する。
+
+作成されたジョブを実行するなど、ライフサイクルを管理するのはPlankサービスが行っている。
 
 ## 定期的なジョブの例
 例えば定期的なジョブを実行したい時は以下のようにYAMLで書く。
@@ -31,7 +33,7 @@ periodics:
       command: ["/bin/date"]
 ```
 
-上記の設定を見て、Horologiumが作成するProwJobは以下のようになる。
+上記の設定を見て、Horologiumサービスが作成するProwJobは以下のようになる。上記は自分で書くが、下記はクラスター上で動くHorologiumサービスが生成して、データはクラスターのK8sAPIサーバで管理される。ジョブの情報を自分でデータベースなどを用意して管理する必要がないという点でProwはよくできている。
 
 ```
 apiVersion: prow.k8s.io/v1
@@ -82,7 +84,7 @@ spec:
   type: periodic
   ```
 
-  これによってPlankサービスは以下のようなPodを作成する。
+これによってPlankサービスは以下のようなPodを作成する。以下の情報も自分で管理する必要がなく、K8sAPIサーバに保存されるし、Podの実行結果もK8sの仕組みで成功、失敗などがわかる。Plankサービスはそれを見てProwJobのステータスを成功や失敗にするだけ。
 
   ```
   apiVersion: v1
