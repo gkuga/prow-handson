@@ -12,9 +12,16 @@ OpenSaaS Studio 5月の勉強会は[Prow](https://github.com/kubernetes/test-inf
 * [Plugins](docs/plugins.md)
 
 # ハンズオン
+* [スライド](slides/handson.key)
+
+## ドキュメント
 * [Prowのデプロイ](docs/getting_started_deploy.md)
+* [Pluginを試す](docs/try_plugins.md)
+* [CIを試す](docs/try_ci.md)
+* [PRマージの自動化](automation_merge.md)
 
 # まとめ
+* [スライド](slides/conclusion.key)
 
 # 付録
 * プラグイン開発

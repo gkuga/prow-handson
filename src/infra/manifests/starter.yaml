@@ -294,12 +294,17 @@ spec:
         - --config-path=/etc/config/config.yaml
         - --tide-url=http://tide/
         - --hook-url=http://hook:8888/plugin-help
+        - --spyglass=true
+        - --gcs-credentials-file=/etc/service-account/service-account.json
         ports:
           - name: http
             containerPort: 8080
         volumeMounts:
         - name: config
           mountPath: /etc/config
+          readOnly: true
+        - name: service-account
+          mountPath: /etc/service-account
           readOnly: true
         livenessProbe:
           httpGet:
@@ -318,6 +323,9 @@ spec:
       - name: config
         configMap:
           name: config
+      - name: service-account
+        secret:
+          secretName: prow-sa-key
 ---
 apiVersion: v1
 kind: Service

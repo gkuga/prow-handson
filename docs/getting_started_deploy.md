@@ -1,4 +1,4 @@
-# Handson用のリポジトリ
+# ハンズオン用のリポジトリ
 [gkuga/prow-handson](https://github.com/gkuga/prow-handson)のリポジトリをフォークして使う。
 
 # Prowのインストール
@@ -6,12 +6,11 @@ ProwはKubernetes上で動くのでクラスターを用意する必要がある
 
 ## 手動によるデプロイ
 
-
 ### 1. クラスターの作成
 
 * GCPプロジェクトを作成する。
 ```
-gcloud projects create prow-handson-$( perl -e 'printf ("%04d\n",rand(10000))' ) --set-as-default
+$ gcloud projects create prow-handson-$( perl -e 'printf ("%04d\n",rand(10000))' ) --set-as-default
 ```
 
 * 環境変数の設定
@@ -20,69 +19,92 @@ $ gcloud projects list
 $ gcloud beta billing accounts list
 $ cp .env.sample .env
 $ vi .env
-. .env
+$ . .env
 ```
 
 * リソースの作成
 ```
-make create-sa
-make enable-apis
-make init
-make plan
-make apply
+$ make create-terraform-sa
+$ make enable-apis
+$ make init
+$ make plan
+$ make apply
 ```
 
 * 認証
 ```
-make get-cluster-credentials
+$ make get-cluster-credentials
+$ kubectl get nodes
+NAME                                                  STATUS   ROLES    AGE   VERSION
+gke-prow-handson-clu-prow-handson-nod-9bc08c7c-0jl5   Ready    <none>   11h   v1.12.7-gke.10
+gke-prow-handson-clu-prow-handson-nod-9bc08c7c-2d5h   Ready    <none>   11h   v1.12.7-gke.10
 ```
 
 ### 2. Githubのトークンの作成
 
 * Webhook検証用のトークン
+
 ```
-make generate-hmac-token
-make create-hmac-token-secrete
+$ make generate-hmac-token
+$ make create-hmac-token-secrete
 ```
 
 * Prowボット用のトークン
-[Github](https://github.com/settings/tokens)にアクセスしてトークンを作成。Scopeは`repo:status`,` repo_deployment`,`public_repo`にチェック。
+
+[Github](https://github.com/settings/tokens)にアクセスしてトークンを作成。Scopeは`repo:status`, ` repo_deployment`, `public_repo`にチェック。
 ```
-echo 'generated token' > secrets/oauth-token
-make create-oauth-token-secrete
+$ echo 'generated token' > secrets/oauth-token
+$ make create-oauth-token-secrete
 ```
 
 ### 3. Prowのデプロイ
 
 * デプロイ
+
 ```
-kubectl apply -f src/infra/manifests/starter.yaml
+$ kubectl apply -f src/infra/manifests/starter.yaml
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deck               2         2         2            2           3m
+hook               2         2         2            2           3m
+horologium         1         1         1            1           3m
+plank              1         1         1            1           3m
+sinker             1         1         1            1           3m
+statusreconciler   1         1         1            1           3m
+tide               1         1         1            1           3m
 ```
 
 * ipアドレスを確認してアクセス
+
 ```
-kubectl get ingress ing
+$ kubectl get ingress ing
+NAME   HOSTS   ADDRESS        PORTS   AGE
+ing    *       34.96.87.188   80      3m
 ```
 
 ### 4. Webhookの設定
 Githubのフォークしたプロジェクトの設定からWebhookを設定。
 
 * Payload URL
+
 ```
 http://<your ingress address>/hook
 ```
 
 * Content type
+
 ```
 application/json
 ```
 
 * Secret
+
 ```
 <generated token for webhook>
 ```
 
 * Which events would you like to trigger this webhook?
+
 ```
 Send me everything.
 ```

@@ -31,11 +31,11 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "${var.name}-node-pool"
   location   = "${var.location}"
   cluster    = "${google_container_cluster.primary.name}"
-  node_count = 1
+  node_count = 2
 
   autoscaling {
-    min_node_count = 1
-    max_node_count = 1
+    min_node_count = 2
+    max_node_count = 2
   }
 
   node_config {

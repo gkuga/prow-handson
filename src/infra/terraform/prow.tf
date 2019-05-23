@@ -1,6 +1,6 @@
 resource "google_service_account" "prow" {
-  account_id   = "prow-service-account"
-  display_name = ""
+  account_id   = "prow-ci"
+  display_name = "prow-ci"
 }
 
 resource "google_storage_bucket" "prow" {

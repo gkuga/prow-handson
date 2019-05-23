@@ -1,0 +1,40 @@
+plugins:
+  < org >/< repo >:
+  - size
+  - cat # /meow
+  - dog # /it-is-fine
+  - yuks # /joke
+  - pony # /pony
+  - shrug # /shrug
+  - blunderbuss
+  - config-updater
+  - verify-owners
+  - approve
+  - assign
+  - lgtm
+  - wip
+  - lifecycle
+  - hold
+  - trigger
+
+size:
+  s:   10
+  m:   30
+  l:   100
+  xl:  500
+  xxl: 1000
+
+config_updater:
+  maps:
+    src/infra/manifests/plugins.yaml:
+      name: plugins
+    src/infra/manifests/config.yaml:
+      name: config
+
+triggers:
+- repos:
+  - < org >/< repo >
+
+approve:
+- repos:
+  - < org >/< repo >
