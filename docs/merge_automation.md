@@ -1,11 +1,11 @@
-# Sample 2
-
-PRを更新した時のPresubmitやマージ後のPostsubmitをトリガーにジョブを動かす[Trigger](plugins/trigger.md)プラグインを設定してCIを回す。
+# Sample 3
 
 ```
-$ cp src/infra/manifests/plugins.yaml.sample2 src/infra/manifests/plugins.yaml
-$ cp src/infra/manifests/config.yaml.sample2 src/infra/manifests/config.yaml
+$ cp src/infra/manifests/plugins.yaml.sample3 src/infra/manifests/plugins.yaml
+$ cp src/infra/manifests/config.yaml.sample3 src/infra/manifests/config.yaml
 $ make check-conf # For mac user
+$ make update-plugins
+$ make update-config
 ```
 
 * 書き換え

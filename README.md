@@ -18,7 +18,7 @@ OpenSaaS Studio 5月の勉強会は[Prow](https://github.com/kubernetes/test-inf
 * [Prowのデプロイ](docs/getting_started_deploy.md)
 * [Pluginを試す](docs/try_plugins.md)
 * [CIを試す](docs/try_ci.md)
-* [PRマージの自動化](automation_merge.md)
+* [PRマージの自動化](docs/merge_automation.md)
 
 # まとめ
 * [スライド](slides/conclusion.key)
