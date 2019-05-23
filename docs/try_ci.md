@@ -100,3 +100,5 @@ presubmits:
 ```
 
 このリポジトリのsecretsディレクトリにgithubの鍵を置いて`make create-ssh-key-secret`をするとファイルから鍵がクラスタにデプロイされるようにMakefileに記述している。
+
+また、K8sの[Pod Preset](https://kubernetes.io/docs/concepts/workloads/pods/podpreset/)のような仕組みがあり、ジョブの実行時、マウントされた鍵を使って、プライベートなリソースにアクセスできる。
