@@ -16,7 +16,7 @@ Ingressのアドレスは↓
 ```
 $ kubectl get ing
 NAME   HOSTS   ADDRESS        PORTS   AGE
-ing    *       34.96.87.188   80      140m
+ing    *       xx.xx.xx.xxx   80      140m
 ```
 
 * 反映
