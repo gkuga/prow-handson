@@ -79,7 +79,7 @@ tide               1         1         1            1           3m
 ```
 $ kubectl get ingress ing
 NAME   HOSTS   ADDRESS        PORTS   AGE
-ing    *       34.96.87.188   80      3m
+ing    *       xx.xx.xx.xxx   80      3m
 ```
 
 ### 4. Webhookの設定
