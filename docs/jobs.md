@@ -1,7 +1,7 @@
 
 # ProwJobs
 
-CIで行われるジョブはProwJobsとしてK8sのCRDとして定義されている。
+CIで行われるジョブはProwJobsとしてK8sのCRDにより定義されている。
 
 ## CustomResourceDefinition 
 K8sのリソースを独自に定義できる仕組み。K8sのリソースのように扱える。ProwJobsをgetすると以下のようになる。
