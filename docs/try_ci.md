@@ -5,21 +5,21 @@ PRを更新した時のPresubmitやマージ後のPostsubmitをトリガーに�
 ```
 $ cp src/infra/manifests/plugins.yaml.sample2 src/infra/manifests/plugins.yaml
 $ cp src/infra/manifests/config.yaml.sample2 src/infra/manifests/config.yaml
-$ make check-conf # For mac user
 ```
 
 * 書き換え
 
-例えば`< org >/< repo >`を`gkuga/prow-handson`へ。< domain >をIngressのアドレスに。
-
-Ingressのアドレスは↓
-```
-$ kubectl get ing
-NAME   HOSTS   ADDRESS        PORTS   AGE
-ing    *       xx.xx.xx.xxx   80      140m
-```
+Sample 1と同様にplugins.yamlの`< org >/< repo >`を自分のアカウント名/リポジトリ名へ書き換える。また、config.yamlに`< domain >`というところがあるので、Ingressのアドレスに。`< bucket >`はGCPのプロジェクトIDへ。（バケット名はプロジェクトIDで作成されている。`gcloud config list`でプロジェクトIDは確認できる。）`< org >`は自分のアカウント名`< repo >`はリポジトリ名へ。
 
 * 反映
+
+下記でエラーが出ないかチェック。
+
+```
+$ make check-conf # For mac user
+```
+
+エラーがなければ下記で反映。
 
 ```
 $ make update-plugins
