@@ -12,6 +12,6 @@ func Hello(name string) (greeting string) {
 }
 
 func main() {
-	greeting := Hello("Prow")
+	greeting := Hello("Prooooooooooooooooow")
 	fmt.Println(greeting)
 }
