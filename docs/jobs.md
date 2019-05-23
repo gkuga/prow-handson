@@ -4,7 +4,7 @@
 CIで行われるジョブはProwJobsとしてK8sのCRDにより定義されている。
 
 ## CustomResourceDefinition 
-K8sのリソースを独自に定義できる仕組み。K8sの通常のリソースのように扱える。ProwJobsをgetすると以下のようになる。
+K8sのリソースを独自に定義できる仕組み。K8sの通常のリソースのように扱える。`kubectl get prowjobs`すると以下のようになる。
 
 ```
 $ kubectl get prowjobs
