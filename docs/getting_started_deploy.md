@@ -40,7 +40,7 @@ gke-prow-handson-clu-prow-handson-nod-9bc08c7c-0jl5   Ready    <none>   11h   v1
 gke-prow-handson-clu-prow-handson-nod-9bc08c7c-2d5h   Ready    <none>   11h   v1.12.7-gke.10
 ```
 
-### 2. Githubのトークンの作成
+### 2. 各トークンの作成とクラスタへのデプロイ
 
 * Webhook検証用のトークン
 
@@ -52,9 +52,17 @@ $ make create-hmac-token-secrete
 * Prowボット用のトークン
 
 [Github](https://github.com/settings/tokens)にアクセスしてトークンを作成。Scopeは`repo:status`, ` repo_deployment`, `public_repo`にチェック。
+
 ```
 $ echo 'generated token' > secrets/oauth-token
 $ make create-oauth-token-secrete
+```
+
+* ProwがGCSへアクセスするためのアカウントのトークン(アカウントの作成はTerraformで行っている)
+
+```
+make generate-prow-sa-key
+make create-prow-sa-key-secret
 ```
 
 ### 3. Prowのデプロイ

@@ -4,9 +4,6 @@ create-terraform-sa:
 delete-terraform-sa:
 	gcloud iam service-accounts delete terraform@${TF_VAR_project_id}.iam.gserviceaccount.com
 
-generate-prow-sa-key:
-	./src/infra/scripts/prow_service_account_key.sh ${TF_VAR_project_id} prow-ci ./secrets/prow_service_account.json
-
 enable-apis:
 	./src/infra/scripts/enable_apis.sh
 
@@ -43,8 +40,12 @@ create-hmac-token-secret:
 create-oauth-token-secret:
 	kubectl create secret generic oauth-token --from-file=oauth=./secrets/oauth-token
 
+generate-prow-sa-key:
+	./src/infra/scripts/prow_service_account_key.sh ${TF_VAR_project_id} prow-ci ./secrets/prow_service_account.json
+
 create-prow-sa-key-secret:
 	kubectl create secret generic prow-sa-key --from-file=service-account.json=./secrets/prow_service_account.json -n test-pods
+	kubectl create secret generic prow-sa-key --from-file=service-account.json=./secrets/prow_service_account.json
 
 create-ssh-key-secret:
 	kubectl create secret generic ssh-key --from-file=./secrets/ssh-key -n test-pods 
